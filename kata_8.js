@@ -5,30 +5,35 @@ const events = [
 ];
 
 function bookSeats(events, eventId, seats) {
-    const event = events.find(item => item.id === eventId)
+    const event = events.find(item => item.id === eventId) // récupération de l'event grâce à son id
+    //initialisation résultat
     let resultat = {
         success: true,
         message: "",
         remainingSeats: 0
     }
+    //vérification de l'existence de l'event
     if (event == undefined) {
         resultat.success = false
         resultat.message = "Event not found"
         resultat.remainingSeats = 0
         return resultat
     }
+    //vérification qu'au moins 1 siège soit demandé dans la réservation
     if (seats <= 0 ) {
         resultat.success = false
         resultat.message = "You need to book at least one seat"
-        resultat.remainingSeats = event.capacity - event.booked - seats
+        resultat.remainingSeats = event.capacity - event.booked
         return resultat
     }
+    //vérification que le nombre de sièges à réserver ne dépasse pas le nb de places disponibles
     if (event.capacity - event.booked - seats <0) {
         resultat.success = false
         resultat.message = "Not enough capacity"
         resultat.remainingSeats = 0
         return resultat
     }
+    // incrémentation du nombre de siège disponible
     event.bookSeats +=seats
     resultat.remainingSeats = event.capacity - event.booked - seats
     return resultat
