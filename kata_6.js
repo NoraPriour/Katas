@@ -1,3 +1,5 @@
+// exercice à finir
+
 function tryWord(word, base) {
     // TODO: fix jeu sensible à la casse.
     if (word === base) {
