@@ -1,7 +1,10 @@
+import java.util.Dictionary;
+import java.util.Hashtable;
+
 public class Status {
-    public int seed = 0;
-    public int sprout = 0;
-    public int flower = 0;
+    private int seed = 0;
+    private int sprout = 0;
+    private int flower = 0;
 
     public Status(Plant[] plants) {
         for (Plant plant : plants) {

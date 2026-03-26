@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Greenhouse {
 
-    Plant[] plants = new Plant[0];
+    private Plant[] plants = new Plant[0];
 
     public void addPlant(Plant plant) {
         this.plants = Arrays.copyOf(this.plants, this.plants.length + 1);
@@ -23,6 +23,7 @@ public class Greenhouse {
 
     public String[] getPlantsInDifficulty() {
         String[] plantsInDifficulty = new String[0];
+        // J'ai pas trouvé de fonction filtre donc j'ai fait un if
         for (Plant plant : plants) {
             if (plant.getWaterLevel() < 2) {
                 plantsInDifficulty = Arrays.copyOf((plantsInDifficulty), plantsInDifficulty.length + 1);
