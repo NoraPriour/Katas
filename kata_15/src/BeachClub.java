@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BeachClub {
     private String name;
@@ -16,7 +17,7 @@ public class BeachClub {
     }
 
     public boolean rent(String customerName, int deckchairs, int umbrellas, int towels) {
-        if ((deckchairs <= 0 && umbrellas <= 0 && towels <= 0) || (deckchairs < 0 || umbrellas < 0 || towels < 0) || (deckchairs > this.availableDeckchairs || umbrellas > availableUmbrellas || towels > availableTowels)) {
+        if ((deckchairs == 0 && umbrellas == 0 && towels == 0) || (deckchairs < 0 || umbrellas < 0 || towels < 0) || (deckchairs > this.availableDeckchairs || umbrellas > availableUmbrellas || towels > availableTowels)) {
             return false;
         }
         this.availableDeckchairs -= deckchairs;
@@ -28,10 +29,10 @@ public class BeachClub {
 
     public Boolean returnRental(String customerName) {
         for (Rental rental : rentals) {
-            if (rental.getCustomerName() == customerName) {
-                this.availableDeckchairs += rental.getDeckchairs();
-                this.availableUmbrellas += rental.getUmbrellas();
-                this.availableTowels += rental.getTowels();
+            if (Objects.equals(rental.customerName(), customerName)) {
+                this.availableDeckchairs += rental.deckchairs();
+                this.availableUmbrellas += rental.umbrellas();
+                this.availableTowels += rental.towels();
                 rentals.remove(rental);
                 return true;
             }

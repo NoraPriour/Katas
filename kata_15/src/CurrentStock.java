@@ -1,7 +1,7 @@
 public class CurrentStock {
-    private int availableDeckchairs;
-    private int availableUmbrellas;
-    private int availableTowels;
+    private final int availableDeckchairs;
+    private final int availableUmbrellas;
+    private final int availableTowels;
 
     public CurrentStock(int availableDeckchairs, int availableUmbrellas, int availableTowels) {
         this.availableDeckchairs = availableDeckchairs;
