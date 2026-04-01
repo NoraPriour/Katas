@@ -24,20 +24,10 @@ public class SummerCamp {
     }
 
     public int getTotalOccupiedPeople() {
-        int totalOccupiedPeople = 0;
-        for (Pitch pitch : pitches) {
-            totalOccupiedPeople += pitch.getOccupiedPeople();
-        }
-        return totalOccupiedPeople;
+        return this.pitches.stream().map(Pitch::getOccupiedPeople).reduce(0, Integer::sum);
     }
 
-    public int getFullPitchesCount(){
-        int fullPitchesCount = 0;
-        for (Pitch pitch : pitches) {
-            if (pitch.isFull()) {
-                fullPitchesCount++;
-            }
-        }
-        return fullPitchesCount;
+    public int getFullPitchesCount() {
+        return this.pitches.stream().filter(Pitch::isFull).toList().size();
     }
 }
